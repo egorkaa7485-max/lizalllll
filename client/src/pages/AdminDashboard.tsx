@@ -35,17 +35,66 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus, Trash2, Package, MapPin, List, Upload, ExternalLink } from "lucide-react";
+import { Plus, Trash2, Package, MapPin, List, Upload, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 import { WishlistItemCard } from "@/components/WishlistItemCard";
 
 export default function AdminDashboard() {
-  const { user, isAuthenticated } = useAuth();
-  
-  if (!isAuthenticated) return null; // Auth guard handled by router/App.tsx usually, or redirect here
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
-  return (
-    <div className="min-h-screen pt-32 pb-20 px-4 bg-secondary/10">
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (login === "I_Love_Egorka7485" && password === "Egorka_lycshiy") {
+      setIsAuthorized(true);
+    } else {
+      alert("Неверный логин или пароль");
+    }
+  };
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-screen pt-32 pb-20 px-4 flex items-center justify-center bg-secondary/10">
+        <Card className="w-full max-w-md shadow-xl border-white/50 bg-white/80 backdrop-blur">
+          <CardHeader className="text-center">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Lock className="text-primary w-6 h-6" />
+            </div>
+            <CardTitle className="text-2xl font-serif">Вход в панель</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Логин</label>
+                <Input 
+                  value={login} 
+                  onChange={(e) => setLogin(e.target.value)} 
+                  placeholder="Введите логин"
+                  className="rounded-xl"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Пароль</label>
+                <Input 
+                  type="password"
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  placeholder="Введите пароль"
+                  className="rounded-xl"
+                />
+              </div>
+              <Button type="submit" className="w-full rounded-xl h-12">
+                Войти
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  const { data: wishlist } = useWishlist();
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
