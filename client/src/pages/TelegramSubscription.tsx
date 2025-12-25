@@ -72,15 +72,7 @@ export default function TelegramSubscription() {
           ))}
         </div>
 
-        <div className="mt-16 bg-primary/5 rounded-2xl p-8 border border-primary/10 text-center">
-          <h2 className="text-2xl font-serif mb-4 flex items-center justify-center gap-2">
-            <Send className="w-6 h-6 text-[#229ED9]" />
-            Как получить доступ?
-          </h2>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            После оплаты подписки через раздел донатов, пожалуйста, напиши мне в Telegram 
-            или прикрепи скриншот оплаты в форме "Отправить подарок", чтобы я могла добавить тебя в канал.
-          </p>
+        <div className="mt-16 text-center">
           <Link href="/">
             <Button variant="link" className="text-muted-foreground hover:text-primary">
               Вернуться на главную
