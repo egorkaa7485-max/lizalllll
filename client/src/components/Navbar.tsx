@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex justify-between h-16 items-center">
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <span className="text-2xl font-serif text-primary">Lisa Belle</span>
+              <span className="text-2xl font-serif text-primary">Liza Belle</span>
             </div>
           </Link>
 

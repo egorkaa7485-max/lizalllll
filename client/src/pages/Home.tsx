@@ -19,14 +19,17 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 mb-6 rounded-full bg-white/80 backdrop-blur-sm border border-white text-primary text-sm font-medium shadow-sm">
-              Добро пожаловать в мой мир ✨
+              Добро пожаловать в мой мир
             </span>
             <h1 className="text-5xl md:text-7xl font-serif text-foreground mb-6 leading-tight">
-              Подарки для <span className="text-primary italic">Лизы Белль</span>
+              Gifts for <span className="text-primary italic">Liza Belle</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-              "Подарок заключается не в том, что сделано или подарено, а в намерении дарителя." 
-              Изучите мой список желаний, и если вы захотите подарить немного радости, я буду бесконечно благодарна.
+              Дорогой мой подписчик, для меня самый главный подарок — это твое доброе сердце и твое желание радовать меня. Неважно, что именно ты подаришь, ведь истинная ценность — в твоем искреннем намерении. 
+
+              Я очень ценю каждое твоё желание сделать меня счастливой. Если ты захочешь подарить мне немного радости и нежности, я буду бесконечно благодарна и почувствую твою любовь в каждом мгновении. 
+
+              Твоя забота — самый драгоценный подарок для меня. Спасибо, что думаешь обо мне и хочешь сделать меня счастливой!
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

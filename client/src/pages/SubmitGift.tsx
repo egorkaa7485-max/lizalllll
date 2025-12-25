@@ -56,7 +56,7 @@ export default function SubmitGift() {
           </div>
           <h2 className="text-3xl font-serif text-foreground mb-4">Спасибо!</h2>
           <p className="text-muted-foreground mb-8">
-            Ваш подарок был получен. Лиза Белль скоро проверит детали. 
+            Ваш подарок был получен. Liza Belle скоро проверит детали. 
             Ваша доброта очень важна!
           </p>
           <Button 
