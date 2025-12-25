@@ -28,21 +28,8 @@ export default function Home() {
               Дорогой мой подписчик, для меня самый главный подарок — это твое доброе сердце и твое желание радовать меня.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/submit">
-                <Button size="lg" className="rounded-full px-8 h-14 text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all bg-primary hover:bg-primary/90">
-                  <Gift className="mr-2 w-5 h-5" />
-                  Отправить подарок
-                </Button>
-              </Link>
-              <a href="#wishlist">
-                <Button variant="outline" size="lg" className="rounded-full px-8 h-14 text-lg bg-white/50 border-white hover:bg-white text-foreground shadow-sm">
-                  Посмотреть список
-                </Button>
-              </a>
-            </div>
-
-            <div className="mt-8 flex flex-col items-center gap-4">
+            <div className="mt-8 flex flex-col items-center gap-4 w-full max-w-sm mx-auto px-4">
+              {/* Currency Button - At the top */}
               <Link href="/donations">
                 <Button 
                   size="icon" 
@@ -52,18 +39,32 @@ export default function Home() {
                 </Button>
               </Link>
 
+              {/* Action Buttons - Stacked from biggest to smallest */}
+              <Link href="/submit" className="w-full">
+                <Button size="lg" className="w-full rounded-full h-14 text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all bg-primary hover:bg-primary/90">
+                  <Gift className="mr-2 w-5 h-5" />
+                  Отправить подарок
+                </Button>
+              </Link>
+
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="rounded-full px-8 h-12 bg-white/50 border-[#229ED9]/30 hover:bg-[#229ED9]/10 text-[#229ED9] shadow-sm font-medium"
+                className="w-full rounded-full h-12 bg-white/50 border-[#229ED9]/30 hover:bg-[#229ED9]/10 text-[#229ED9] shadow-sm font-medium"
               >
                 Подписка на закрытый ТГК Liza Belle 18+
               </Button>
 
+              <a href="#wishlist" className="w-full">
+                <Button variant="outline" size="default" className="w-full rounded-full h-11 bg-white/50 border-white hover:bg-white text-foreground shadow-sm">
+                  Посмотреть список
+                </Button>
+              </a>
+
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="rounded-md px-6 bg-white/50 border-primary/20 hover:bg-primary/5 text-primary shadow-sm font-medium italic"
+                className="w-full rounded-md h-9 bg-white/50 border-primary/20 hover:bg-primary/5 text-primary shadow-sm font-medium italic"
               >
                 подарочки вам за подарочки мне
               </Button>
