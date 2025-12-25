@@ -59,7 +59,7 @@ export function WishlistItemCard({ item }: { item: WishlistItem }) {
             >
               <Button variant="outline" className="w-full bg-secondary/50 border-secondary hover:bg-primary/10 hover:text-primary transition-all">
                 <ExternalLink className="w-4 h-4 mr-2" />
-                View Item
+                Посмотреть
               </Button>
             </a>
           )}
@@ -73,18 +73,18 @@ export function WishlistItemCard({ item }: { item: WishlistItem }) {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Remove item?</AlertDialogTitle>
+                  <AlertDialogTitle>Удалить?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This will permanently remove "{item.title}" from the wishlist.
+                    Это навсегда удалит "{item.title}" из списка желаний.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>Отмена</AlertDialogCancel>
                   <AlertDialogAction 
                     onClick={() => deleteItem(item.id)}
                     className="bg-destructive hover:bg-destructive/90 text-white"
                   >
-                    {isPending ? "Deleting..." : "Delete"}
+                    {isPending ? "Удаление..." : "Удалить"}
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>

@@ -22,18 +22,18 @@ export function Navbar() {
           <div className="flex items-center space-x-6">
             <Link href="/" className={`${isActive("/")} transition-colors duration-200 flex items-center gap-2`}>
               <Home className="w-4 h-4" />
-              <span className="hidden sm:inline">Home</span>
+              <span className="hidden sm:inline">Главная</span>
             </Link>
             
             <Link href="/submit" className={`${isActive("/submit")} transition-colors duration-200 flex items-center gap-2`}>
               <Gift className="w-4 h-4" />
-              <span className="hidden sm:inline">Send Gift</span>
+              <span className="hidden sm:inline">Отправить подарок</span>
             </Link>
 
             {user && (
               <Link href="/admin" className={`${isActive("/admin")} transition-colors duration-200 flex items-center gap-2`}>
                 <Shield className="w-4 h-4" />
-                <span className="hidden sm:inline">Admin</span>
+                <span className="hidden sm:inline">Админка</span>
               </Link>
             )}
 

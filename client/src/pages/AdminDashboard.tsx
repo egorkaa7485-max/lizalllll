@@ -49,21 +49,21 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-serif font-bold text-foreground">Admin Dashboard</h1>
-            <p className="text-muted-foreground">Manage your world, {user?.firstName || "Admin"}</p>
+            <h1 className="text-3xl font-serif font-bold text-foreground">Панель администратора</h1>
+            <p className="text-muted-foreground">Управляйте своим миром, {user?.firstName || "Админ"}</p>
           </div>
         </div>
 
         <Tabs defaultValue="submissions" className="space-y-8">
           <TabsList className="bg-white p-1 rounded-xl shadow-sm border border-border">
             <TabsTrigger value="submissions" className="rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <Package className="w-4 h-4 mr-2" /> Submissions
+              <Package className="w-4 h-4 mr-2" /> Поступления
             </TabsTrigger>
             <TabsTrigger value="wishlist" className="rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <List className="w-4 h-4 mr-2" /> Wishlist
+              <List className="w-4 h-4 mr-2" /> Список желаний
             </TabsTrigger>
             <TabsTrigger value="pickup" className="rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <MapPin className="w-4 h-4 mr-2" /> Pickup Points
+              <MapPin className="w-4 h-4 mr-2" /> Пункты выдачи
             </TabsTrigger>
           </TabsList>
 
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
 function SubmissionsTab() {
   const { data: submissions, isLoading } = useSubmissions();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Загрузка...</div>;
 
   return (
     <div className="space-y-6">
@@ -133,7 +133,7 @@ function SubmissionsTab() {
         
         {submissions?.length === 0 && (
           <div className="col-span-full py-20 text-center text-muted-foreground bg-white rounded-xl border border-dashed">
-            No submissions yet.
+            Пока нет поступлений.
           </div>
         )}
       </div>
@@ -172,12 +172,12 @@ function WishlistTab() {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button className="rounded-full shadow-lg shadow-primary/20">
-              <Plus className="w-4 h-4 mr-2" /> Add Item
+              <Plus className="w-4 h-4 mr-2" /> Добавить
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[500px]">
             <DialogHeader>
-              <DialogTitle>Add to Wishlist</DialogTitle>
+              <DialogTitle>Добавить в список желаний</DialogTitle>
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-4">
@@ -186,7 +186,7 @@ function WishlistTab() {
                   name="imagePath"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Image</FormLabel>
+                      <FormLabel>Изображение</FormLabel>
                       <FormControl>
                         <div className="space-y-2">
                            {field.value && (
@@ -201,7 +201,7 @@ function WishlistTab() {
                              }}
                              buttonClassName="w-full"
                            >
-                             <Upload className="w-4 h-4 mr-2" /> Upload Image
+                             <Upload className="w-4 h-4 mr-2" /> Загрузить фото
                            </ObjectUploader>
                         </div>
                       </FormControl>
@@ -214,7 +214,7 @@ function WishlistTab() {
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Title</FormLabel>
+                      <FormLabel>Название</FormLabel>
                       <FormControl>
                         <Input placeholder="Chanel Bag" {...field} />
                       </FormControl>
@@ -227,7 +227,7 @@ function WishlistTab() {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description (Optional)</FormLabel>
+                      <FormLabel>Описание (необязательно)</FormLabel>
                       <FormControl>
                         <Textarea placeholder="Black quilted leather..." {...field} />
                       </FormControl>
@@ -240,7 +240,7 @@ function WishlistTab() {
                   name="link"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Link (Optional)</FormLabel>
+                      <FormLabel>Ссылка (необязательно)</FormLabel>
                       <FormControl>
                         <Input placeholder="https://..." {...field} />
                       </FormControl>
@@ -249,7 +249,7 @@ function WishlistTab() {
                   )}
                 />
                 <Button type="submit" className="w-full" disabled={isPending}>
-                  {isPending ? "Adding..." : "Add to Wishlist"}
+                  {isPending ? "Добавление..." : "Добавить в список"}
                 </Button>
               </form>
             </Form>
@@ -295,12 +295,12 @@ function PickupPointsTab() {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button className="rounded-full shadow-lg shadow-primary/20">
-              <Plus className="w-4 h-4 mr-2" /> Add Location
+              <Plus className="w-4 h-4 mr-2" /> Добавить место
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add Pickup Point</DialogTitle>
+              <DialogTitle>Добавить пункт выдачи</DialogTitle>
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-4">
@@ -309,7 +309,7 @@ function PickupPointsTab() {
                   name="address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Address</FormLabel>
+                      <FormLabel>Адрес</FormLabel>
                       <FormControl>
                         <Input placeholder="123 Main St, City" {...field} />
                       </FormControl>
@@ -322,7 +322,7 @@ function PickupPointsTab() {
                   name="details"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Additional Details (Optional)</FormLabel>
+                      <FormLabel>Дополнительные детали (необязательно)</FormLabel>
                       <FormControl>
                         <Textarea placeholder="Leave at reception..." {...field} />
                       </FormControl>
@@ -331,7 +331,7 @@ function PickupPointsTab() {
                   )}
                 />
                 <Button type="submit" className="w-full" disabled={isPending}>
-                  {isPending ? "Adding..." : "Add Location"}
+                  {isPending ? "Добавление..." : "Добавить место"}
                 </Button>
               </form>
             </Form>

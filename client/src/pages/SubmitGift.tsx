@@ -54,16 +54,16 @@ export default function SubmitGift() {
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="w-8 h-8 text-green-600" />
           </div>
-          <h2 className="text-3xl font-serif text-foreground mb-4">Thank You!</h2>
+          <h2 className="text-3xl font-serif text-foreground mb-4">Спасибо!</h2>
           <p className="text-muted-foreground mb-8">
-            Your gift submission has been received. Lisa Belle will review the details soon. 
-            Your kindness means the world!
+            Ваш подарок был получен. Лиза Белль скоро проверит детали. 
+            Ваша доброта очень важна!
           </p>
           <Button 
             onClick={() => window.location.href = "/"}
             className="w-full rounded-full"
           >
-            Return Home
+            Вернуться на главную
           </Button>
         </Card>
       </div>
@@ -74,10 +74,10 @@ export default function SubmitGift() {
     <div className="min-h-screen pt-32 pb-20 px-4 bg-background">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-serif text-foreground mb-4">Send a Gift</h1>
+          <h1 className="text-4xl font-serif text-foreground mb-4">Отправить подарок</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Please fill out the details below. You'll need to upload the QR code for your order 
-            and proof of payment so we can verify and collect your generous gift.
+            Пожалуйста, заполните данные ниже. Вам нужно будет загрузить QR-код вашего заказа 
+            и подтверждение оплаты, чтобы мы могли проверить и забрать ваш щедрый подарок.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export default function SubmitGift() {
                       name="senderName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>First Name</FormLabel>
+                          <FormLabel>Имя</FormLabel>
                           <FormControl>
                             <Input placeholder="John" {...field} className="rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors h-12" />
                           </FormControl>
@@ -106,7 +106,7 @@ export default function SubmitGift() {
                       name="senderSurname"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Last Name</FormLabel>
+                          <FormLabel>Фамилия</FormLabel>
                           <FormControl>
                             <Input placeholder="Doe" {...field} className="rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors h-12" />
                           </FormControl>
@@ -123,7 +123,7 @@ export default function SubmitGift() {
                       name="qrCodePath"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Order QR Code</FormLabel>
+                          <FormLabel>QR-код заказа</FormLabel>
                           <FormControl>
                             <div className="space-y-3">
                               <div className="border-2 border-dashed border-input rounded-xl p-4 text-center hover:bg-secondary/10 transition-colors">
@@ -132,7 +132,7 @@ export default function SubmitGift() {
                                     <img src={field.value} alt="QR Code" className="w-full h-full object-cover" />
                                   </div>
                                 ) : (
-                                  <div className="text-sm text-muted-foreground py-4">No file selected</div>
+                                  <div className="text-sm text-muted-foreground py-4">Файл не выбран</div>
                                 )}
                               </div>
                               <ObjectUploader
@@ -145,11 +145,11 @@ export default function SubmitGift() {
                                 buttonClassName="w-full bg-secondary text-secondary-foreground hover:bg-secondary/80"
                               >
                                 <UploadCloud className="w-4 h-4 mr-2" />
-                                Upload QR Photo
+                                Загрузить фото QR
                               </ObjectUploader>
                             </div>
                           </FormControl>
-                          <FormDescription>Photo of the pickup QR code</FormDescription>
+                          <FormDescription>Фото QR-кода для получения</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -161,7 +161,7 @@ export default function SubmitGift() {
                       name="paymentProofPath"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Payment Proof</FormLabel>
+                          <FormLabel>Подтверждение оплаты</FormLabel>
                           <FormControl>
                             <div className="space-y-3">
                               <div className="border-2 border-dashed border-input rounded-xl p-4 text-center hover:bg-secondary/10 transition-colors">
@@ -170,7 +170,7 @@ export default function SubmitGift() {
                                     <img src={field.value} alt="Proof" className="w-full h-full object-cover" />
                                   </div>
                                 ) : (
-                                  <div className="text-sm text-muted-foreground py-4">No file selected</div>
+                                  <div className="text-sm text-muted-foreground py-4">Файл не выбран</div>
                                 )}
                               </div>
                               <ObjectUploader
@@ -183,11 +183,11 @@ export default function SubmitGift() {
                                 buttonClassName="w-full bg-secondary text-secondary-foreground hover:bg-secondary/80"
                               >
                                 <UploadCloud className="w-4 h-4 mr-2" />
-                                Upload Receipt
+                                Загрузить чек
                               </ObjectUploader>
                             </div>
                           </FormControl>
-                          <FormDescription>Screenshot of payment confirmation</FormDescription>
+                          <FormDescription>Скриншот подтверждения оплаты</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -199,7 +199,7 @@ export default function SubmitGift() {
                     disabled={isPending}
                     className="w-full h-12 text-lg rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
                   >
-                    {isPending ? "Submitting..." : "Send Gift Details"}
+                    {isPending ? "Отправка..." : "Отправить детали подарка"}
                   </Button>
                 </form>
               </Form>
@@ -211,10 +211,10 @@ export default function SubmitGift() {
             <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10 sticky top-24">
               <h3 className="font-serif text-xl font-medium text-foreground mb-4 flex items-center">
                 <MapPin className="w-5 h-5 mr-2 text-primary" />
-                Pickup Points
+                Пункты выдачи
               </h3>
               <p className="text-sm text-muted-foreground mb-6">
-                Please select one of these locations for delivery when ordering your gift.
+                Пожалуйста, выберите одно из этих мест для доставки при заказе подарка.
               </p>
               
               <div className="space-y-4">
@@ -233,7 +233,7 @@ export default function SubmitGift() {
                 ))}
                 
                 {(!pickupPoints || pickupPoints.length === 0) && (
-                  <p className="text-sm text-muted-foreground italic">No pickup points listed yet.</p>
+                  <p className="text-sm text-muted-foreground italic">Пункты выдачи пока не указаны.</p>
                 )}
               </div>
             </div>
