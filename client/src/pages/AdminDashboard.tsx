@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useAuth } from "@/hooks/use-auth";
 import { useWishlist, useCreateWishlistItem } from "@/hooks/use-wishlist";
 import { usePickupPoints, useCreatePickupPoint, useDeletePickupPoint } from "@/hooks/use-pickup-points";
 import { useSubmissions } from "@/hooks/use-submissions";
@@ -94,12 +93,13 @@ export default function AdminDashboard() {
     );
   }
 
-  const { data: wishlist } = useWishlist();
+  return (
+    <div className="min-h-screen pt-32 pb-20 px-4 bg-secondary/10">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-serif font-bold text-foreground">Панель администратора</h1>
-            <p className="text-muted-foreground">Управляйте своим миром, {user?.firstName || "Админ"}</p>
+            <p className="text-muted-foreground">Управляйте своим миром</p>
           </div>
         </div>
 
