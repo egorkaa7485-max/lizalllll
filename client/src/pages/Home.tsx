@@ -29,16 +29,6 @@ export default function Home() {
             </p>
             
             <div className="mt-8 flex flex-col items-center gap-4 w-full max-w-sm mx-auto px-4">
-              {/* Currency Button - At the top */}
-              <Link href="/donations">
-                <Button 
-                  size="icon" 
-                  className="w-14 h-14 rounded-full text-2xl shadow-[0_4px_20px_rgba(var(--primary),0.4)] hover:shadow-[0_6px_25px_rgba(var(--primary),0.6)] transition-all bg-primary hover:bg-primary/90"
-                >
-                  ₽
-                </Button>
-              </Link>
-
               {/* Action Buttons - Stacked from biggest to smallest */}
               <Link href="/submit" className="w-full">
                 <Button size="lg" className="w-full rounded-full h-14 text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all bg-primary hover:bg-primary/90">
@@ -68,6 +58,16 @@ export default function Home() {
               >
                 подарочки вам за подарочки мне
               </Button>
+
+              {/* Currency Button - Now at the bottom */}
+              <Link href="/donations" className="mt-2">
+                <Button 
+                  size="icon" 
+                  className="w-14 h-14 rounded-full text-2xl shadow-[0_4px_20px_rgba(var(--primary),0.4)] hover:shadow-[0_6px_25px_rgba(var(--primary),0.6)] transition-all bg-primary hover:bg-primary/90"
+                >
+                  ₽
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
