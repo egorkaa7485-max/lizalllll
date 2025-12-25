@@ -11,18 +11,6 @@ import Donations from "@/pages/Donations";
 import AdminDashboard from "@/pages/AdminDashboard";
 import { Navbar } from "@/components/Navbar";
 
-function PrivateRoute({ component: Component, ...rest }: any) {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) return null; // Or a loading spinner
-
-  if (!user) {
-    return <Redirect to="/" />;
-  }
-
-  return <Component {...rest} />;
-}
-
 function Router() {
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -31,7 +19,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/submit" component={SubmitGift} />
         <Route path="/donations" component={Donations} />
-        <PrivateRoute path="/admin" component={AdminDashboard} />
+        <Route path="/Lizka_Lychshay061172" component={AdminDashboard} />
         <Route component={NotFound} />
       </Switch>
     </div>
