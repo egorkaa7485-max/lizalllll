@@ -63,9 +63,9 @@ export default function Home() {
               </Button>
 
               <Button 
-                variant="ghost" 
+                variant="outline" 
                 size="sm" 
-                className="text-muted-foreground hover:text-primary transition-colors italic"
+                className="rounded-md px-6 bg-white/50 border-primary/20 hover:bg-primary/5 text-primary shadow-sm font-medium italic"
               >
                 подарочки вам за подарочки мне
               </Button>
