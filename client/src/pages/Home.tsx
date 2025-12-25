@@ -46,12 +46,28 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col items-center gap-4">
               <Button 
                 size="icon" 
                 className="w-14 h-14 rounded-full text-2xl shadow-[0_4px_20px_rgba(var(--primary),0.4)] hover:shadow-[0_6px_25px_rgba(var(--primary),0.6)] transition-all bg-primary hover:bg-primary/90"
               >
                 ₽
+              </Button>
+
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="rounded-full px-8 h-12 bg-white/50 border-[#229ED9]/30 hover:bg-[#229ED9]/10 text-[#229ED9] shadow-sm font-medium"
+              >
+                Подписка на закрытый ТГК Liza Belle 18+
+              </Button>
+
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-muted-foreground hover:text-primary transition-colors italic"
+              >
+                подарочки вам за подарочки мне
               </Button>
             </div>
           </motion.div>
