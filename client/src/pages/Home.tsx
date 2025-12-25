@@ -45,6 +45,15 @@ export default function Home() {
                 </Button>
               </a>
             </div>
+
+            <div className="mt-8 flex justify-center">
+              <Button 
+                size="icon" 
+                className="w-14 h-14 rounded-full text-2xl shadow-lg bg-primary hover:bg-primary/90"
+              >
+                ₽
+              </Button>
+            </div>
           </motion.div>
         </div>
         
