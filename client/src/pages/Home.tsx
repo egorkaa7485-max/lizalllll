@@ -25,11 +25,7 @@ export default function Home() {
               Gifts for <span className="text-primary italic">Liza Belle</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-              Дорогой мой подписчик, для меня самый главный подарок — это твое доброе сердце и твое желание радовать меня. Неважно, что именно ты подаришь, ведь истинная ценность — в твоем искреннем намерении. 
-
-              Я очень ценю каждое твоё желание сделать меня счастливой. Если ты захочешь подарить мне немного радости и нежности, я буду бесконечно благодарна и почувствую твою любовь в каждом мгновении. 
-
-              Твоя забота — самый драгоценный подарок для меня. Спасибо, что думаешь обо мне и хочешь сделать меня счастливой!
+              Дорогой мой подписчик, для меня самый главный подарок — это твое доброе сердце и твое желание радовать меня.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -47,12 +43,14 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex flex-col items-center gap-4">
-              <Button 
-                size="icon" 
-                className="w-14 h-14 rounded-full text-2xl shadow-[0_4px_20px_rgba(var(--primary),0.4)] hover:shadow-[0_6px_25px_rgba(var(--primary),0.6)] transition-all bg-primary hover:bg-primary/90"
-              >
-                ₽
-              </Button>
+              <Link href="/donations">
+                <Button 
+                  size="icon" 
+                  className="w-14 h-14 rounded-full text-2xl shadow-[0_4px_20px_rgba(var(--primary),0.4)] hover:shadow-[0_6px_25px_rgba(var(--primary),0.6)] transition-all bg-primary hover:bg-primary/90"
+                >
+                  ₽
+                </Button>
+              </Link>
 
               <Button 
                 variant="outline" 

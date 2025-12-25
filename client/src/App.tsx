@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/use-auth";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import SubmitGift from "@/pages/SubmitGift";
+import Donations from "@/pages/Donations";
 import AdminDashboard from "@/pages/AdminDashboard";
 import { Navbar } from "@/components/Navbar";
 
@@ -29,6 +30,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/submit" component={SubmitGift} />
+        <Route path="/donations" component={Donations} />
         <PrivateRoute path="/admin" component={AdminDashboard} />
         <Route component={NotFound} />
       </Switch>
