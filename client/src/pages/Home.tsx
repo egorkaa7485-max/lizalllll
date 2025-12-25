@@ -49,7 +49,7 @@ export default function Home() {
             <div className="mt-8 flex justify-center">
               <Button 
                 size="icon" 
-                className="w-14 h-14 rounded-full text-2xl shadow-lg bg-primary hover:bg-primary/90"
+                className="w-14 h-14 rounded-full text-2xl shadow-[0_4px_20px_rgba(var(--primary),0.4)] hover:shadow-[0_6px_25px_rgba(var(--primary),0.6)] transition-all bg-primary hover:bg-primary/90"
               >
                 ₽
               </Button>
