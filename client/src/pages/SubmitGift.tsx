@@ -95,7 +95,7 @@ export default function SubmitGift() {
                         <FormItem>
                           <FormLabel>Имя</FormLabel>
                           <FormControl>
-                            <Input placeholder="John" {...field} className="rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors h-12" />
+                            <Input placeholder="Егор" {...field} className="rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors h-12" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -108,7 +108,7 @@ export default function SubmitGift() {
                         <FormItem>
                           <FormLabel>Фамилия</FormLabel>
                           <FormControl>
-                            <Input placeholder="Doe" {...field} className="rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors h-12" />
+                            <Input placeholder="фамилия" {...field} className="rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors h-12" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
