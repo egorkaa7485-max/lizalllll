@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { SiDonationalerts } from "react-icons/si";
-import { FaPaypal, FaBitcoin } from "react-icons/fa";
+import { Heart, Wallet, Coffee } from "lucide-react";
+import { FaBitcoin } from "react-icons/fa";
 import qrCodeImage from "@assets/panel-711364234-image-0605f462-2767-4cdd-afac-e483324861b7_1766695976511.jpg";
 
 export default function Donations() {
@@ -30,7 +30,7 @@ export default function Donations() {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl">
-                    <SiDonationalerts />
+                    <Heart className="fill-current" />
                   </div>
                   <div className="text-center sm:text-left">
                     <h3 className="font-medium text-lg">DonationAlerts</h3>
@@ -51,7 +51,7 @@ export default function Donations() {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl">
-                    <FaPaypal />
+                    <Coffee />
                   </div>
                   <div className="text-center sm:text-left">
                     <h3 className="font-medium text-lg">DonatePay</h3>
