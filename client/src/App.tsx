@@ -8,6 +8,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import SubmitGift from "@/pages/SubmitGift";
 import Donations from "@/pages/Donations";
+import TelegramSubscription from "@/pages/TelegramSubscription";
 import AdminDashboard from "@/pages/AdminDashboard";
 import { Navbar } from "@/components/Navbar";
 
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/submit" component={SubmitGift} />
         <Route path="/donations" component={Donations} />
+        <Route path="/telegram-subscription" component={TelegramSubscription} />
         <Route path="/Lizka_Lychshay061172" component={AdminDashboard} />
         <Route component={NotFound} />
       </Switch>

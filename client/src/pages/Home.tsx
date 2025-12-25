@@ -37,13 +37,15 @@ export default function Home() {
                 </Button>
               </Link>
 
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="w-full rounded-full h-12 bg-white/50 border-[#229ED9]/30 hover:bg-[#229ED9]/10 text-[#229ED9] shadow-sm font-medium"
-              >
-                Подписка на закрытый ТГК Liza Belle 18+
-              </Button>
+              <Link href="/telegram-subscription" className="w-full">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="w-full rounded-full h-12 bg-white/50 border-[#229ED9]/30 hover:bg-[#229ED9]/10 text-[#229ED9] shadow-sm font-medium"
+                >
+                  Подписка на закрытый ТГК Liza Belle 18+
+                </Button>
+              </Link>
 
               <a href="#wishlist" className="w-full">
                 <Button variant="outline" size="default" className="w-full rounded-full h-11 bg-white/50 border-white hover:bg-white text-foreground shadow-sm">
