@@ -37,11 +37,16 @@ export function useAuth() {
     },
   });
 
+  const refreshUser = () => {
+    queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });
+  };
+
   return {
     user,
     isLoading,
     isAuthenticated: !!user,
     logout: logoutMutation.mutate,
     isLoggingOut: logoutMutation.isPending,
+    refreshUser,
   };
 }

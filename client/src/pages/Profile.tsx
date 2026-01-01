@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useState, useEffect } from "react";
 
 export default function Profile() {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const { data: submissions } = useSubmissions();
   const [telegramUserId, setTelegramUserId] = useState("");
   const [telegramAvatar, setTelegramAvatar] = useState<string | null>(null);
@@ -40,7 +40,6 @@ export default function Profile() {
   // Telegram Web App auth
   const handleTelegramAuth = () => {
     // For Telegram Web App, this would be called from Telegram
-    // For now, we'll simulate it
     const tg = (window as any).Telegram?.WebApp;
     if (tg) {
       tg.ready();
@@ -60,11 +59,47 @@ export default function Profile() {
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          // Reload page to get updated user data
-          window.location.reload();
+          // Refresh user data
+          refreshUser();
         }
       })
       .catch(error => console.error('Telegram auth error:', error));
+    } else {
+      // For testing without Telegram Web App
+      testTelegramAuth();
+    }
+  };
+
+  // Test function for Telegram auth without Web App context
+  const testTelegramAuth = async () => {
+    const testData = {
+      id: 123456789,
+      first_name: "Тест",
+      last_name: "Пользователь",
+      username: "testuser",
+      photo_url: "https://via.placeholder.com/200x200?text=Test+Avatar"
+    };
+
+    try {
+      const response = await fetch('/api/telegram-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(testData),
+      });
+
+      const data = await response.json();
+      console.log('Telegram auth response:', data);
+
+      if (data.success) {
+        alert('Тестовые данные Telegram сохранены!');
+        // Refresh user data
+        refreshUser();
+      } else {
+        alert('Ошибка: ' + (data.error || 'Неизвестная ошибка'));
+      }
+    } catch (error) {
+      console.error('Test Telegram auth error:', error);
+      alert('Ошибка сети: ' + error);
     }
   };
 
@@ -126,6 +161,16 @@ export default function Profile() {
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
                   Узнать свой User ID можно в боте @userinfobot
+                </p>
+              </div>
+
+              {/* Test Telegram Auth Button */}
+              <div className="pt-4 border-t">
+                <Button onClick={handleTelegramAuth} variant="outline">
+                  🚀 Протестировать Telegram авторизацию
+                </Button>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Для работы нужен Telegram Web App контекст
                 </p>
               </div>
             </div>
