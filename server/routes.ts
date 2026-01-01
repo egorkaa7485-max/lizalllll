@@ -148,10 +148,70 @@ export async function registerRoutes(
           telegramLastName: last_name,
           telegramPhotoUrl: photo_url,
         });
+        res.json({ success: true, user: existingUser });
       } else {
         // Create new user with Telegram data
-        await storage.createUser({
+        const newUser = await storage.createUser({
           telegramId: id.toString(),
+          telegramUsername: username,
+          telegramFirstName: first_name,
+          telegramLastName: last_name,
+          telegramPhotoUrl: photo_url,
+        });
+        res.json({ success: true, user: newUser });
+      }
+    } catch (error) {
+      console.error('Telegram auth error:', error);
+      res.status(500).json({ error: 'Failed to authenticate with Telegram' });
+    }
+  });
+
+  // Simple auth endpoint - return user data for Telegram auth
+  app.get('/api/auth/user', async (req, res) => {
+    // For now, we'll use a simple session-based approach
+    // In production, you'd want proper session management
+    const telegramId = req.headers['x-telegram-user-id'] as string;
+
+    if (!telegramId) {
+      return res.status(401).json({ message: 'Not authenticated' });
+    }
+
+    try {
+      const user = await storage.getUserByTelegramId(telegramId);
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).json({ message: 'User not found' });
+      }
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      res.status(500).json({ message: 'Failed to fetch user' });
+    }
+  });
+
+  // Login endpoint for Telegram
+  app.post('/api/login', async (req, res) => {
+    try {
+      const { id, first_name, last_name, username, photo_url } = req.body;
+
+      if (!id) {
+        return res.status(400).json({ error: 'Telegram ID is required' });
+      }
+
+      // Find or create user
+      let user = await storage.getUserByTelegramId(id.toString());
+
+      if (!user) {
+        user = await storage.createUser({
+          telegramId: id.toString(),
+          telegramUsername: username,
+          telegramFirstName: first_name,
+          telegramLastName: last_name,
+          telegramPhotoUrl: photo_url,
+        });
+      } else {
+        // Update user data
+        await storage.updateUserTelegramData(id.toString(), {
           telegramUsername: username,
           telegramFirstName: first_name,
           telegramLastName: last_name,
@@ -159,11 +219,12 @@ export async function registerRoutes(
         });
       }
 
-      const user = await storage.getUserByTelegramId(id.toString());
+      // Set session header for subsequent requests
+      res.setHeader('x-telegram-user-id', id.toString());
       res.json({ success: true, user });
     } catch (error) {
-      console.error('Telegram auth error:', error);
-      res.status(500).json({ error: 'Failed to authenticate with Telegram' });
+      console.error('Login error:', error);
+      res.status(500).json({ error: 'Failed to login' });
     }
   });
 

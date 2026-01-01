@@ -9,11 +9,30 @@ import { Label } from "@/components/ui/label";
 import { useState, useEffect } from "react";
 
 export default function Profile() {
-  const { user, refreshUser } = useAuth();
+  const { user, login, refreshUser, isAuthenticated } = useAuth();
   const { data: submissions } = useSubmissions();
   const [telegramUserId, setTelegramUserId] = useState("");
   const [telegramAvatar, setTelegramAvatar] = useState<string | null>(null);
   const [loadingAvatar, setLoadingAvatar] = useState(false);
+
+  // Auto-login with Telegram Web App data
+  useEffect(() => {
+    const tg = (window as any).Telegram?.WebApp;
+    if (tg && !isAuthenticated) {
+      tg.ready();
+
+      const userData = tg.initDataUnsafe?.user;
+      if (userData) {
+        login({
+          id: userData.id,
+          first_name: userData.first_name,
+          last_name: userData.last_name,
+          username: userData.username,
+          photo_url: userData.photo_url,
+        });
+      }
+    }
+  }, [login, isAuthenticated]);
 
   // Auto-load Telegram avatar if user has Telegram data
   useEffect(() => {
