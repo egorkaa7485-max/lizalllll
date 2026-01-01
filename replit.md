@@ -1,8 +1,9 @@
-# Liza Belle Gift Platform
+# Elizavet Belle Gift Platform
+
 
 ## Overview
 
-A gift submission platform for "Liza Belle" that allows fans to send gifts through a wishlist system. The application features a public-facing wishlist display, a gift submission form with file uploads, and an admin dashboard for managing wishlist items, pickup points, and reviewing submissions. Includes Telegram bot integration for notifications.
+A gift submission platform for "Elizavet Belle" that allows fans to send gifts through a wishlist system.
 
 ## User Preferences
 

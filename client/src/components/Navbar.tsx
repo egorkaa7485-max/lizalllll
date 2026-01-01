@@ -10,12 +10,14 @@ export function Navbar() {
   const isActive = (path: string) => location === path ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-panel">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-700/90">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <Link href="/">
+          <Link href="/profile">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <span className="text-2xl font-serif text-primary">Liza Belle</span>
+              <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
+                <span className="text-primary font-semibold">E</span>
+              </div>
             </div>
           </Link>
 

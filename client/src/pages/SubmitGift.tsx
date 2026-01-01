@@ -36,6 +36,7 @@ export default function SubmitGift() {
     defaultValues: {
       senderName: "",
       senderSurname: "",
+      message: "",
       qrCodePath: "",
       paymentProofPath: "",
     },
@@ -56,7 +57,7 @@ export default function SubmitGift() {
           </div>
           <h2 className="text-3xl font-serif text-foreground mb-4">Спасибо!</h2>
           <p className="text-muted-foreground mb-8">
-            Ваш подарок был получен. Liza Belle скоро проверит детали. 
+            Ваш подарок был получен. <span style={{textShadow: '1px 1px 0px rgba(0,0,0,0.3), 2px 2px 0px rgba(0,0,0,0.2), 3px 3px 0px rgba(0,0,0,0.1)'}}>Elizavet Belle</span> скоро проверит детали.
             Ваша доброта очень важна!
           </p>
           <Button 
@@ -71,7 +72,7 @@ export default function SubmitGift() {
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4 bg-background">
+    <div className="min-h-screen pt-32 pb-20 px-4 bg-gradient-to-b from-gray-300 to-pink-500">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-serif text-foreground mb-4">Отправить подарок</h1>
@@ -116,6 +117,27 @@ export default function SubmitGift() {
                       )}
                     />
                   </div>
+
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Что вы хотите передать Лизе?</FormLabel>
+                        <FormControl>
+                          <textarea
+                            {...field}
+                            value={field.value || ""}
+                            placeholder="Напишите ваше пожелание или сообщение..."
+                            className="w-full rounded-xl bg-secondary/20 border-border/50 focus:bg-white transition-colors resize-none h-24 p-3"
+                            rows={4}
+                          />
+                        </FormControl>
+                        <FormDescription>Необязательное поле для личного сообщения</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* QR Code Upload */}
@@ -209,7 +231,7 @@ export default function SubmitGift() {
 
           {/* Sidebar - Pickup Points */}
           <div className="lg:col-span-1">
-            <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10 sticky top-24">
+            <div className="bg-white rounded-2xl p-6 border border-border/50 sticky top-24">
               <h3 className="font-serif text-xl font-medium text-foreground mb-4 flex items-center">
                 <MapPin className="w-5 h-5 mr-2 text-primary" />
                 Пункты выдачи

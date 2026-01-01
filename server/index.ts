@@ -60,6 +60,8 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  log(`Starting server in ${process.env.NODE_ENV || 'undefined'} mode`);
+
   await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -74,8 +76,10 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (process.env.NODE_ENV === "production") {
+    log("Setting up static file serving for production");
     serveStatic(app);
   } else {
+    log("Setting up Vite for development");
     const { setupVite } = await import("./vite");
     await setupVite(httpServer, app);
   }
@@ -88,8 +92,7 @@ app.use((req, res, next) => {
   httpServer.listen(
     {
       port,
-      host: "0.0.0.0",
-      reusePort: true,
+      host: "127.0.0.1",
     },
     () => {
       log(`serving on port ${port}`);

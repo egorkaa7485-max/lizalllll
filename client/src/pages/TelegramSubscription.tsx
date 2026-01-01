@@ -20,7 +20,7 @@ export default function TelegramSubscription() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-serif text-foreground mb-4">Закрытый ТГК Liza Belle 18+</h1>
+          <h1 className="text-4xl font-serif text-foreground mb-4" style={{textShadow: '1px 1px 0px rgba(0,0,0,0.3), 2px 2px 0px rgba(0,0,0,0.2), 3px 3px 0px rgba(0,0,0,0.1)'}}>Закрытый ТГК Elizavet Belle 18+</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Выбери подходящий тариф и получи доступ к эксклюзивному контенту, 
             который я публикую только для своих самых преданных подписчиков. 💖
