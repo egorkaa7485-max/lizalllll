@@ -5,6 +5,7 @@ import {
   type InsertWishlistItem, type InsertPickupPoint, type InsertSubmission,
   type WishlistItem, type PickupPoint, type Submission
 } from "@shared/schema";
+import { users, type User, type UpsertUser } from "@shared/models/auth";
 import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
@@ -22,6 +23,11 @@ export interface IStorage {
   getSubmissions(): Promise<Submission[]>;
   createSubmission(submission: InsertSubmission): Promise<Submission>;
   // updateSubmissionStatus(id: number, status: string): Promise<Submission>;
+
+  // Users
+  getUserByTelegramId(telegramId: string): Promise<User | null>;
+  createUser(user: UpsertUser): Promise<User>;
+  updateUserTelegramData(telegramId: string, data: Partial<UpsertUser>): Promise<User>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -61,6 +67,26 @@ export class DatabaseStorage implements IStorage {
   async createSubmission(submission: InsertSubmission): Promise<Submission> {
     const [newSubmission] = await db.insert(submissions).values(submission).returning();
     return newSubmission;
+  }
+
+  // Users
+  async getUserByTelegramId(telegramId: string): Promise<User | null> {
+    const [user] = await db.select().from(users).where(eq(users.telegramId, telegramId)).limit(1);
+    return user || null;
+  }
+
+  async createUser(user: UpsertUser): Promise<User> {
+    const [newUser] = await db.insert(users).values(user).returning();
+    return newUser;
+  }
+
+  async updateUserTelegramData(telegramId: string, data: Partial<UpsertUser>): Promise<User> {
+    const [updatedUser] = await db
+      .update(users)
+      .set(data)
+      .where(eq(users.telegramId, telegramId))
+      .returning();
+    return updatedUser;
   }
 }
 

@@ -128,6 +128,45 @@ export async function registerRoutes(
     }
   });
 
+  // Telegram Web App auth
+  app.post('/api/telegram-auth', async (req, res) => {
+    try {
+      const { id, first_name, last_name, username, photo_url } = req.body;
+
+      if (!id) {
+        return res.status(400).json({ error: 'Telegram ID is required' });
+      }
+
+      // Find or create user by Telegram ID
+      const existingUser = await storage.getUserByTelegramId(id.toString());
+
+      if (existingUser) {
+        // Update user data
+        await storage.updateUserTelegramData(id.toString(), {
+          telegramUsername: username,
+          telegramFirstName: first_name,
+          telegramLastName: last_name,
+          telegramPhotoUrl: photo_url,
+        });
+      } else {
+        // Create new user with Telegram data
+        await storage.createUser({
+          telegramId: id.toString(),
+          telegramUsername: username,
+          telegramFirstName: first_name,
+          telegramLastName: last_name,
+          telegramPhotoUrl: photo_url,
+        });
+      }
+
+      const user = await storage.getUserByTelegramId(id.toString());
+      res.json({ success: true, user });
+    } catch (error) {
+      console.error('Telegram auth error:', error);
+      res.status(500).json({ error: 'Failed to authenticate with Telegram' });
+    }
+  });
+
 
 
   return httpServer;

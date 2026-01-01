@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Profile() {
   const { user } = useAuth();
@@ -14,6 +14,13 @@ export default function Profile() {
   const [telegramUserId, setTelegramUserId] = useState("");
   const [telegramAvatar, setTelegramAvatar] = useState<string | null>(null);
   const [loadingAvatar, setLoadingAvatar] = useState(false);
+
+  // Auto-load Telegram avatar if user has Telegram data
+  useEffect(() => {
+    if (user?.telegramPhotoUrl) {
+      setTelegramAvatar(user.telegramPhotoUrl);
+    }
+  }, [user]);
 
   const fetchTelegramAvatar = async () => {
     if (!telegramUserId) return;
@@ -27,6 +34,37 @@ export default function Profile() {
       console.error('Error fetching Telegram avatar:', error);
     } finally {
       setLoadingAvatar(false);
+    }
+  };
+
+  // Telegram Web App auth
+  const handleTelegramAuth = () => {
+    // For Telegram Web App, this would be called from Telegram
+    // For now, we'll simulate it
+    const tg = (window as any).Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+
+      // Send user data to backend
+      fetch('/api/telegram-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: tg.initDataUnsafe?.user?.id,
+          first_name: tg.initDataUnsafe?.user?.first_name,
+          last_name: tg.initDataUnsafe?.user?.last_name,
+          username: tg.initDataUnsafe?.user?.username,
+          photo_url: tg.initDataUnsafe?.user?.photo_url,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Reload page to get updated user data
+          window.location.reload();
+        }
+      })
+      .catch(error => console.error('Telegram auth error:', error));
     }
   };
 
@@ -56,8 +94,19 @@ export default function Profile() {
                 </AvatarFallback>
               </Avatar>
               <div>
-                <CardTitle className="text-2xl">{user.firstName || user.email || "User"}</CardTitle>
-                <p className="text-muted-foreground">{user.email}</p>
+                <CardTitle className="text-2xl">
+                  {user.telegramFirstName && user.telegramLastName
+                    ? `${user.telegramFirstName} ${user.telegramLastName}`
+                    : user.firstName || user.email || "User"}
+                </CardTitle>
+                <p className="text-muted-foreground">
+                  {user.telegramUsername ? `@${user.telegramUsername}` : user.email}
+                </p>
+                {user.telegramId && (
+                  <p className="text-sm text-muted-foreground">
+                    Telegram ID: {user.telegramId}
+                  </p>
+                )}
               </div>
             </div>
             <div className="mt-6 space-y-4">
