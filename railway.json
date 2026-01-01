@@ -12,7 +12,7 @@
   },
   "environments": {
     "production": {
-      "env": {
+      "variables": {
         "NODE_ENV": "production",
         "NIXPACKS_NODE_VERSION": "20",
         "TELEGRAM_BOT_TOKEN": "8593913204:AAFRpJqdRcHhknFYnKdUK_Lt3vV5smO2zcc"
