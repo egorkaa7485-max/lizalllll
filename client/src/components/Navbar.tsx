@@ -40,15 +40,51 @@ export function Navbar() {
             )}
 
             {user ? (
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => logout()}
                 className="text-muted-foreground hover:text-destructive transition-colors"
               >
                 <LogOut className="w-4 h-4" />
               </Button>
-            ) : null}
+            ) : (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  // Simulate Telegram login for testing
+                  const testData = {
+                    id: 123456789,
+                    first_name: "Тест",
+                    last_name: "Пользователь",
+                    username: "testuser",
+                    photo_url: "https://via.placeholder.com/200x200?text=Test+Avatar"
+                  };
+
+                  fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testData),
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    if (data.success) {
+                      window.location.reload();
+                    } else {
+                      alert('Ошибка авторизации');
+                    }
+                  })
+                  .catch(error => {
+                    console.error('Login error:', error);
+                    alert('Ошибка сети');
+                  });
+                }}
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                🚀 Войти
+              </Button>
+            )}
           </div>
         </div>
       </div>
